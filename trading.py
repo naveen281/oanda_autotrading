@@ -22,6 +22,16 @@ class TradeORB:
         To Parse DateTime in UTC format from ISO Format
         """
         return str(parser.isoparse(ISO_time)).split()[1].split(':')
+    
+    
+    def return_ask_bid(self, price_response):
+        """
+        returns asking and bidding price from a response object
+        """
+
+        # ask = price_response['prices'][0]['closeoutAsk']
+        bid = price_response['prices'][0]['closeoutBid']
+        return bid
 
     def get_rates(self):
         """
@@ -109,14 +119,6 @@ class TradeORB:
         resp = self.__client.create_order(data)
         print(resp)
 
-    def return_ask_bid(self, price_response):
-        """
-        returns asking and bidding price from a response object
-        """
-
-        # ask = price_response['prices'][0]['closeoutAsk']
-        bid = price_response['prices'][0]['closeoutBid']
-        return bid
 
     def buy_sell_ORB(self):
         """
