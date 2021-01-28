@@ -17,9 +17,6 @@ class TradeORB:
     def get_instrument(self):
         return self.__instrument
 
-    def get_curr_price(self):
-        return self.__instrument
-
     def parse_time(self, ISO_time):
         """
         To Parse DateTime in UTC format from ISO Format
