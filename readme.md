@@ -48,7 +48,7 @@
   
   for placing order in case of both buy and sell methods, send the order object to `create order` method.
   
-  7 And finally method `buy_sell_ORB`:
+  7. And finally method `buy_sell_ORB`:
   
   This method is responsible for:
   - resetting the ORB(Min and Max thresholds) price at 10:AM Everyday and resume trading afterward by comparing the threshold with current price by calling `reset_high_low`.
