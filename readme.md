@@ -59,8 +59,7 @@
   this function is used if the high or low is none and if we want run this app at diffrent time or somehow we forgot to run it at 10 :00 am
    monitors rate of the instrument in realtime Also executes buy/sell orders based on the ORB logic and current rate and set its value in curr_time and compare its value if value is greater then the value at curr_time then it sell its unit and price at that real time and waits for 10 mins sleep time and if the value is lower then the value at curr_time then buy units at that real time rate(price) and sleep for 10 mins ,
    it repeats its process of buy sell orders unitil we do not stop this app.
-   # Thank you : Navin kaushik 
-  # i  m signing out
+
    
   
       
