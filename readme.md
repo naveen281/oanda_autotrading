@@ -24,9 +24,9 @@
  There are various functions or methods we used for trading:
   1. Initialize a constructor and passed parameters name of client,instrument and sleep time. here client is itself oanda API, Instrument takes from API and sleep time is used for waiting by default its set to (600sec = 10 mins). After placing an order wheather it is sell or buy it must have to wait for given sleep time. You can change this sleep time.According to your requirements.
   
-  2. Parse time function is used to parse the time in min and pass a parameter name iso_time.
+  2. Parse time method is used to parse the time to ISO format.
      str(parser.isoparse used this inbuilt method to parse the time.
-     After parsing we use some in-built methods like split function to get time in mins and second separately. so that we can use logics on them to set time from where it set its ask and bid values.
+     After parsing we use some in-built split function to seperate mins, hours , dates etc as we will need the hour and minute values for ORB logic.
      
   3. create a function name get_rates and define a variable name x for storing insturments and its values that takes from OANDA API through passing a request to api
  
@@ -37,14 +37,18 @@
       from the rate_bid[]list we can find min and max value using min max in-built method.
       - set min value to low-thresh attribute
       - set max value to high_thresh attribute
+      
   5. Defined method named `buy`, required paramters: units and its price.
   - units:- number of units you want to buy.
-  - check its price and compare its value from min bid price its its lower than min bid price then buy given no of units otherwise wait.....
+  - check its price and compare its value from min bid price its its lower than min bid price then buy given no of units otherwise wait.
+  
   6. Defined method named sell, required paramters: units and its price.
   - units:-number of units you want to sell.
-  - check its price and compare its value with max bid price is greater than min bid price then buy given no of units otherwise wait.....
-  for placing order, send the order object to `create order` method.
-  6 And finally method `buy_sell_ORB`:
+  - check its price and compare its value with max bid price is greater than min bid price then buy given no of units otherwise wait.
+  
+  for placing order in case of both buy and sell methods, send the order object to `create order` method.
+  
+  7 And finally method `buy_sell_ORB`:
   
   This method is responsible for:
   - resetting the ORB(Min and Max thresholds) price at 10:AM Everyday and resume trading afterward by comparing the threshold with current price by calling `reset_high_low`.
@@ -59,17 +63,18 @@
   
 
  ## Threading for concurrent trading of 3 instruments:
- used threading library from python.
+ Used threading library from python.
+ 
  Created 3 Trading objects(AUD_CAD,EUR_USD,USD_INR) by instatiating TradeORB class.
 
  Here, we used multithreading because we want to trade more then one instruments concurrently in background.
  1.  Defined a function named start_trading and pass a parameter name (trading_obj) and set it to run infinity until we do not stop it.
-     1.1) Creates three thread here names t1,t2,t3 with the help of threading.thread in-built method.
-     1.2) After that, if we want to start threads then use name of thread.start like....
-          t1.start()
-          t2.start()
-          t3.start()
-      all three methods are started.
+     - 1.1) Creates three thread here names t1,t2,t3 with the help of threading.thread in-built method.
+     - 1.2) After that, if we want to start threads then use name of thread:
+          - t1.start()
+          - t2.start()
+          - t3.start()
+     - all three methods are started.
   
       
       
